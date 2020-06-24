@@ -1,0 +1,17 @@
+{{> views/header }}
+<div class="container">
+    <div class="row content">
+        <div class="col-sm">
+            <span class="light-grey">To be a <b>{{name}}</b> you have to become...</span>
+            <ul>
+                {{#requirements}}
+                    <li class="light-grey">a <a href="/subjects/{{subject.slug}}/{{level}}">
+                        <b>{{level}}</b> in {{subject.name}}
+                    </a></li>
+                {{/requirements}}
+                <li><a href="">...and 28 more</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{> views/footer }}

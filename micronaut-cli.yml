@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.guileon
+testFramework: kotlintest
+sourceLanguage: kotlin
+buildTool: maven
+features: [annotation-api, app-name, docker, file-watch, http-client, kotlin, kotlin-application, kotlin-extension-functions, kotlintest, logback, maven, netty-server, readme, shade, yaml]

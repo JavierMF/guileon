@@ -1,0 +1,117 @@
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 115%;
+}
+
+.light-grey {
+   color: #666666;
+}
+
+.content {
+    margin-top: 100px;
+}
+
+a {
+    color: #039be5ff;
+    text-decoration: underline;
+}
+a:hover {
+    color: #039be5ff;
+    text-decoration: none;
+}
+
+ul li {
+    margin-top: 10px;
+}
+
+ul {
+  list-style: none; /* Remove default bullets */
+}
+
+ul li::before {
+  content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: #039be5ff; /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #039be5ff;
+}
+
+.secondary-link {
+    color: #b7b7b7;
+    font-size: 70%;
+}
+
+.secondary-link a{
+    color: #b7b7b7;
+    text-decoration: underline;
+}
+
+.secondary-link a:hover {
+    color: #b7b7b7;
+    text-decoration: none;
+}
+
+.to-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.resource-title {
+    font-size: 140%;
+}
+
+.resource-metadata {
+    color: #b7b7b7;
+    font-size: 80%;
+    margin-top: 5px;
+}
+
+.resource-popularity {
+    color: #b7b7b7;
+    font-size: 80%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.resource-dislike {
+    margin-left: 10px;
+}
+
+.resource-image {
+    width: 200px;
+}
+
+.pending-changes {
+    margin-top: 30px;
+}
+
+.pending-changes-label {
+    font-size: 70%;
+    color: #b7b7b7;
+}
+
+.btn-primary {
+    background: #039be5ff;
+    border-color: #039be5ff;
+}
+
+.btn-primary:hover {
+    background: #039be5ff;
+    border-color: #039be5ff;
+}

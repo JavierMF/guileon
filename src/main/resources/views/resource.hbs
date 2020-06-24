@@ -1,0 +1,38 @@
+{{> views/header }}
+<div class="container">
+    <div class="row content">
+        <div class="col-sm-10">
+            <div class="resource-title">The <i>{{resource.type}}</i>  <a href="{{resource.url}}" taget="_blank">{{resource.name}}</a></div>
+            <div class="resource-metadata">{{metadataString}}</div>
+            <div class="resource-popularity">
+                <span class="resource-like"><i class="far fa-thumbs-up"></i> {{resource.likes}} </span>
+                <span class="resource-dislike"><i class="far fa-thumbs-down"></i> {{resource.dislikes}} </span>
+            </div>
+            <span class="light-grey">...will help you to become</span>
+            <ul>
+                {{#resource.requirements}}
+                    <li>an <a href="/subjects/{{subject.slug}}/{{level}}">
+                        <b>{{level}}</b> in {{subject.name}}
+                    </a></li>
+                {{/resource.requirements}}
+            </ul>
+            <div class="pending-changes">
+                <span class="pending-changes-label">{{pendingChanges}} pending changes - </span>
+                <span class="secondary-link">[ <a href="">Propose a change</a> ]</span>
+            </div>
+        </div>
+        <div class="col-sm-2 to-right">
+            <img class="img-responsive resource-image" src="{{resource.imageUrl}}">
+        </div>
+    </div>
+    <div class="row comments mt-3">
+        <div class="col-sm-12">
+            <div class="form-group ">
+                <label for="comments">Comments</label>
+                <textarea class="form-control" id="comments" rows="5"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
+{{> views/footer }}

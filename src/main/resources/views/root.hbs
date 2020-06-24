@@ -1,0 +1,24 @@
+{{> views/header }}
+<div class="container">
+    <div class="row content">
+        <div class="col-sm">
+            <span class="light-grey">You want to be a...</span>
+            <ul>
+                {{#careers}}
+                    <li><a href="/careers/{{slug}}">{{name}}</a></li>
+                {{/careers}}
+                <li><a href=""> ...or something else</a></li>
+            </ul>
+        </div>
+        <div class="col-sm">
+            <span class="light-grey">Or maybe you just want to learn...</span>
+            <ul>
+                {{#subjects}}
+                    <li><a href="/subjects/{{slug}}">{{name}}</a></li>
+                {{/subjects}}
+                <li><a href=""> ...or something else</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{> views/footer }}
