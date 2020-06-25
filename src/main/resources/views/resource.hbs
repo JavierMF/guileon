@@ -10,11 +10,11 @@
             </div>
             <span class="light-grey">...will help you to become</span>
             <ul>
-                {{#resource.requirements}}
+                {{#requirements}}
                     <li>an <a href="/subjects/{{subject.slug}}/{{level}}">
                         <b>{{level}}</b> in {{subject.name}}
                     </a></li>
-                {{/resource.requirements}}
+                {{/requirements}}
             </ul>
             <div class="pending-changes">
                 <span class="pending-changes-label">{{pendingChanges}} pending changes - </span>
