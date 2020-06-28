@@ -45,9 +45,9 @@ interface ResourceMetadata {
 }
 
 data class BookMetadata(
-        val author: String,
-        val year: Int,
-        val ISBN: String
+        val author: String?,
+        val year: Int?,
+        val ISBN: String?
 ): ResourceMetadata {
     override fun asUIString() = "by $author, $year. ISBN: $ISBN"
 }

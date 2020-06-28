@@ -36,13 +36,15 @@ class SubjectsController @Inject constructor(
             @PathVariable subjectSlug: String,
             @PathVariable proficencyLevel: ProficencyLevel
     ): HttpResponse<SubjectProficencyViewModel> {
+        // TODO: All of these in a query?d
         val subject = subjectsBackend.getSubject(subjectSlug)
         val requirements = subjectsBackend.getRequirementsForSubjectLevel(subjectSlug, proficencyLevel)
         val resources = subjectsBackend.getResourcesForSubjectLevel(subjectSlug, proficencyLevel)
                 .map { LearningResourceViewModel(it.name, it.slug, it.type.pname(), it.likes) }
+
         return HttpResponse.ok(
                 SubjectProficencyViewModel(
-                        name = subject.name,
+                        name = subject?.name ?: "",
                         proficencyLevel = proficencyLevel,
                         requirements = requirements,
                         resources = resources

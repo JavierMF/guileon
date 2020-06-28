@@ -26,7 +26,7 @@ class CareersController @Inject constructor(
         val requirements = careersBackend.getCareersRequirements(careerSlug)
         return HttpResponse.ok(
                 CareerViewModel(
-                        name = career.name,
+                        name = career?.name ?: "Career not found",
                         requirements = requirements
                 )
         )

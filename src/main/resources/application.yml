@@ -8,3 +8,9 @@ micronaut:
   views:
     rocker:
       enabled: false
+
+
+neo4j:
+  uri: ${GRAPHENEDB_BOLT_URL}
+  username: ${GRAPHENEDB_BOLT_USER}
+  password: ${GRAPHENEDB_BOLT_PASSWORD}

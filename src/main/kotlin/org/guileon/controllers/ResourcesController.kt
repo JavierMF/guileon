@@ -27,10 +27,11 @@ class ResourcesController @Inject constructor(
     @Get("{resourceSlug}")
     @View("resource")
     fun resource(@PathVariable resourceSlug: String): HttpResponse<ResourceViewModel> {
-        val resource = resourcesBackend.getResource(resourceSlug);
-        val requirements = resourcesBackend.getRequirementsForResource(resourceSlug)
+        val resource = resourcesBackend.getResource(resourceSlug) ?: return HttpResponse.serverError();
+        val metadata = resourcesBackend.getMetadataForResource(resourceSlug, resource.type) ?: return HttpResponse.serverError();
+
+        val requirements = resourcesBackend.getRequirementContributingResource(resourceSlug)
         val pendingChanges = changesBackend.getPendingChangesForResource(resourceSlug)
-        val metadata = resourcesBackend.getMetadataForResource(resourceSlug);
         return HttpResponse.ok(
                 ResourceViewModel(resource, requirements, metadata.asUIString(), pendingChanges)
         )
