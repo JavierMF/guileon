@@ -1,5 +1,10 @@
-package org.guileon.data
+package org.guileon.boundaries.backends.persistence
 
+import org.guileon.domain.model.*
+import org.javiermf.primitives.lang.LangISO639
+import org.javiermf.primitives.quantity.PositiveQuantity
+import org.javiermf.primitives.slug.Slug
+import org.javiermf.primitives.url.Url
 import org.neo4j.driver.Value
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -67,17 +72,17 @@ class TheRepository @Inject constructor(
             ){ ProficencyRequirement(it["s"], it["r"]) }
 }
 
-private fun Career(v: Value):Career = Career(v.string("name"), v.string("slug"))
-private fun Subject(v: Value):Subject = Subject(v.string("name"), v.string("slug"))
+private fun Career(v: Value): Career = Career(v.string("name"), Slug(v.string("slug")))
+private fun Subject(v: Value): Subject = Subject(v.string("name"), Slug(v.string("slug")))
 private fun LearningResource(v: Value) = LearningResource(
         type = LearningResourceType.valueOf(v.string("type")),
         name = v.string("name"),
-        slug = v.string("slug"),
-        url = v.string("url"),
-        language = v.string("language"),
-        likes = v.int("likes"),
-        dislikes = v.int("dislikes"),
-        imageUrl = v.string("imageUrl")
+        slug = Slug(v.string("slug")),
+        url = Url(v.string("url")),
+        language = LangISO639(v.string("language")),
+        likes = PositiveQuantity(v.int("likes")),
+        dislikes = PositiveQuantity(v.int("dislikes")),
+        imageUrl = Url(v.string("imageUrl"))
 )
 private fun ProficencyRequirement(subjectValue: Value, proficencyValue: Value) = ProficencyRequirement(
         Subject(subjectValue),

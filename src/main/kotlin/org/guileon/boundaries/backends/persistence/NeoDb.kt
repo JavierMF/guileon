@@ -1,4 +1,4 @@
-package org.guileon.data
+package org.guileon.boundaries.backends.persistence
 
 import org.neo4j.driver.Driver
 import org.neo4j.driver.Value

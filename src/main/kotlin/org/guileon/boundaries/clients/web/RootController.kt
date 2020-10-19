@@ -1,13 +1,13 @@
-package org.guileon.controllers
+package org.guileon.boundaries.clients.web
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.views.View
-import org.guileon.data.Subject
-import org.guileon.backends.SubjectsBackend
-import org.guileon.data.Career
-import org.guileon.backends.CareersBackend
+import org.guileon.domain.model.Subject
+import org.guileon.usecases.SubjectsBackend
+import org.guileon.domain.model.Career
+import org.guileon.usecases.CareersBackend
 import javax.inject.Inject
 
 data class RootViewModel(

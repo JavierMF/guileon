@@ -1,14 +1,14 @@
-package org.guileon.controllers
+package org.guileon.boundaries.clients.web
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.views.View
-import org.guileon.data.ProficencyLevel
-import org.guileon.data.ProficencyRequirement
-import org.guileon.backends.pname
-import org.guileon.backends.SubjectsBackend
+import org.guileon.domain.model.ProficencyLevel
+import org.guileon.domain.model.ProficencyRequirement
+import org.guileon.usecases.pname
+import org.guileon.usecases.SubjectsBackend
 import javax.inject.Inject
 
 data class SubjectProficencyViewModel(
@@ -40,7 +40,7 @@ class SubjectsController @Inject constructor(
         val subject = subjectsBackend.getSubject(subjectSlug)
         val requirements = subjectsBackend.getRequirementsForSubjectLevel(subjectSlug, proficencyLevel)
         val resources = subjectsBackend.getResourcesForSubjectLevel(subjectSlug, proficencyLevel)
-                .map { LearningResourceViewModel(it.name, it.slug, it.type.pname(), it.likes) }
+                .map { LearningResourceViewModel(it.name, it.slug.value, it.type.pname(), it.likes.value) }
 
         return HttpResponse.ok(
                 SubjectProficencyViewModel(

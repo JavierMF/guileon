@@ -1,13 +1,20 @@
-package org.guileon.data
+package org.guileon.domain.model
+
+import org.javiermf.primitives.datetime.Year
+import org.javiermf.primitives.isbn.Isbn
+import org.javiermf.primitives.lang.LangISO639
+import org.javiermf.primitives.quantity.PositiveQuantity
+import org.javiermf.primitives.slug.Slug
+import org.javiermf.primitives.url.Url
 
 data class Career(
         val name: String,
-        val slug: String
+        val slug: Slug
 )
 
 data class Subject(
         val name: String,
-        val slug: String
+        val slug: Slug
 )
 
 data class ProficencyRequirement(
@@ -24,12 +31,12 @@ enum class ProficencyLevel {
 data class LearningResource(
         val type: LearningResourceType,
         val name: String,
-        val slug: String,
-        val url: String,
-        val language: String, // ISO 639
-        val likes: Int,
-        val dislikes: Int,
-        val imageUrl: String? = "https://picsum.com/220/290"
+        val slug: Slug,
+        val url: Url,
+        val language: LangISO639,
+        val likes: PositiveQuantity,
+        val dislikes: PositiveQuantity,
+        val imageUrl: Url? = Url("https://picsum.com/220/290")
 )
 
 enum class LearningResourceType {
@@ -46,8 +53,8 @@ interface ResourceMetadata {
 
 data class BookMetadata(
         val author: String?,
-        val year: Int?,
-        val ISBN: String?
+        val year: Year?,
+        val ISBN: Isbn?
 ): ResourceMetadata {
     override fun asUIString() = "by $author, $year. ISBN: $ISBN"
 }

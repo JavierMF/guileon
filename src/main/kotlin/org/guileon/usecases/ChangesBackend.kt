@@ -1,4 +1,4 @@
-package org.guileon.backends
+package org.guileon.usecases
 
 import javax.inject.Singleton
 

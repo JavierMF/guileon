@@ -1,6 +1,11 @@
-package org.guileon.backends
+package org.guileon.usecases
 
-import org.guileon.data.*
+import org.guileon.boundaries.backends.persistence.TheRepository
+import org.guileon.domain.model.BookMetadata
+import org.guileon.domain.model.LearningResourceType
+import org.guileon.domain.model.ResourceMetadata
+import org.javiermf.primitives.datetime.Year
+import org.javiermf.primitives.isbn.Isbn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -20,8 +25,8 @@ class ResourcesBackend @Inject constructor(
         return when (type) {
             LearningResourceType.book -> BookMetadata(
                     author = metadataMap["author"] as String?,
-                    year =  metadataMap["year"].let { Integer.valueOf(it.toString()) },
-                    ISBN = metadataMap["ISBN"] as String?
+                    year =  Year(metadataMap["year"].let { Integer.valueOf(it.toString()) }),
+                    ISBN = (metadataMap["ISBN"] as String?)?.let { Isbn(it) }
             )
             else -> null
         }

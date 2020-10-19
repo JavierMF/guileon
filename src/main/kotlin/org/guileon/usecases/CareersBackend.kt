@@ -1,6 +1,6 @@
-package org.guileon.backends
+package org.guileon.usecases
 
-import org.guileon.data.*
+import org.guileon.boundaries.backends.persistence.TheRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

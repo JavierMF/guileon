@@ -1,6 +1,8 @@
-package org.guileon.backends
+package org.guileon.usecases
 
-import org.guileon.data.*
+import org.guileon.boundaries.backends.persistence.TheRepository
+import org.guileon.domain.model.LearningResource
+import org.guileon.domain.model.ProficencyLevel
 import javax.inject.Inject
 import javax.inject.Singleton
 

@@ -1,14 +1,14 @@
-package org.guileon.controllers
+package org.guileon.boundaries.clients.web
 
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
 import io.micronaut.views.View
-import org.guileon.backends.ChangesBackend
-import org.guileon.data.LearningResource
-import org.guileon.backends.ResourcesBackend
-import org.guileon.data.ProficencyRequirement
+import org.guileon.usecases.ChangesBackend
+import org.guileon.domain.model.LearningResource
+import org.guileon.usecases.ResourcesBackend
+import org.guileon.domain.model.ProficencyRequirement
 import javax.inject.Inject
 
 data class ResourceViewModel(
