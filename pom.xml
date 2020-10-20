@@ -65,7 +65,6 @@
         <dependency>
             <groupId>io.micronaut.neo4j</groupId>
             <artifactId>micronaut-neo4j-bolt</artifactId>
-            <version>3.0.1.BUILD-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.github.jknack</groupId>
