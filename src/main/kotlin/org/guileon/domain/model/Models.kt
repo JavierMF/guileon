@@ -1,5 +1,7 @@
 package org.guileon.domain.model
 
+import org.guileon.domain.model.primitives.names.AnyName
+import org.guileon.domain.model.primitives.names.EntityName
 import org.javiermf.primitives.datetime.Year
 import org.javiermf.primitives.isbn.Isbn
 import org.javiermf.primitives.lang.LangISO639
@@ -8,12 +10,12 @@ import org.javiermf.primitives.slug.Slug
 import org.javiermf.primitives.url.Url
 
 data class Career(
-        val name: String,
+        val name: EntityName,
         val slug: Slug
 )
 
 data class Subject(
-        val name: String,
+        val name: EntityName,
         val slug: Slug
 )
 
@@ -30,7 +32,7 @@ enum class ProficencyLevel {
 
 data class LearningResource(
         val type: LearningResourceType,
-        val name: String,
+        val name: AnyName,
         val slug: Slug,
         val url: Url,
         val language: LangISO639,
@@ -52,7 +54,7 @@ interface ResourceMetadata {
 }
 
 data class BookMetadata(
-        val author: String?,
+        val author: AnyName?,
         val year: Year?,
         val ISBN: Isbn?
 ): ResourceMetadata {

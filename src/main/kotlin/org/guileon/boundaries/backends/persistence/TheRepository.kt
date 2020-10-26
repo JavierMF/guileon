@@ -1,6 +1,8 @@
 package org.guileon.boundaries.backends.persistence
 
 import org.guileon.domain.model.*
+import org.guileon.domain.model.primitives.names.AnyName
+import org.guileon.domain.model.primitives.names.EntityName
 import org.javiermf.primitives.lang.LangISO639
 import org.javiermf.primitives.quantity.PositiveQuantity
 import org.javiermf.primitives.slug.Slug
@@ -72,11 +74,11 @@ class TheRepository @Inject constructor(
             ){ ProficencyRequirement(it["s"], it["r"]) }
 }
 
-private fun Career(v: Value): Career = Career(v.string("name"), Slug(v.string("slug")))
-private fun Subject(v: Value): Subject = Subject(v.string("name"), Slug(v.string("slug")))
+private fun Career(v: Value): Career = Career(EntityName(v.string("name")), Slug(v.string("slug")))
+private fun Subject(v: Value): Subject = Subject(EntityName(v.string("name")), Slug(v.string("slug")))
 private fun LearningResource(v: Value) = LearningResource(
         type = LearningResourceType.valueOf(v.string("type")),
-        name = v.string("name"),
+        name = AnyName(v.string("name")),
         slug = Slug(v.string("slug")),
         url = Url(v.string("url")),
         language = LangISO639(v.string("language")),

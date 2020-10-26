@@ -4,6 +4,7 @@ import org.guileon.boundaries.backends.persistence.TheRepository
 import org.guileon.domain.model.BookMetadata
 import org.guileon.domain.model.LearningResourceType
 import org.guileon.domain.model.ResourceMetadata
+import org.guileon.domain.model.primitives.names.AnyName
 import org.javiermf.primitives.datetime.Year
 import org.javiermf.primitives.isbn.Isbn
 import javax.inject.Inject
@@ -24,7 +25,7 @@ class ResourcesBackend @Inject constructor(
         val metadataMap = repository.getResourceMetadata(resourceSlug)
         return when (type) {
             LearningResourceType.book -> BookMetadata(
-                    author = metadataMap["author"] as String?,
+                    author = (metadataMap["author"] as String?)?.let { AnyName(it) },
                     year =  Year(metadataMap["year"].let { Integer.valueOf(it.toString()) }),
                     ISBN = (metadataMap["ISBN"] as String?)?.let { Isbn(it) }
             )
