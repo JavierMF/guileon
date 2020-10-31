@@ -2,21 +2,21 @@
 <div class="container">
     <div class="row content">
         <div class="col-sm">
-            <span class="light-grey">To be a <b>{{proficencyLevel}}</b> in <b>{{name}}</b> you have to become...</span>
+            <span class="light-grey">To be a <b>{{data.proficencyLevel}}</b> in <b>{{data.name}}</b> you have to become...</span>
             <ul>
-                {{#requirements}}
+                {{#data.requirements}}
                     <li class="light-grey">a <a href="/subjects/{{subject.slug}}/{{level}}">
                         <b>{{level}}</b> in {{subject.name}}
                     </a></li>
-                {{/requirements}}
+                {{/data.requirements}}
             </ul>
             <span class="light-grey">and you can use these <b>resources</b>...</span>  <span class="secondary-link">[ <a href="subjects/sw-devel-pract/master/resources/add">Add a resource</a> ]</span>
             <ul>
-                {{#resources}}
+                {{#data.resources}}
                     <li class="light-grey">
                         the <i>{{type}}</i> <a href="/resources/{{slug}}">{{name}}</a> <span class="resource-popularity resource-like"><i class="far fa-thumbs-up"></i> {{likes}} </span>
                     </li>
-                {{/resources}}
+                {{/data.resources}}
             </ul>
         </div>
     </div>

@@ -8,6 +8,22 @@ micronaut:
   views:
     rocker:
       enabled: false
+  security:
+    authentication: session
+    redirect:
+      login-success: /
+      login-failure: /auth/loginFailed
+      prior-to-login: true
+    endpoints:
+      logout:
+        enabled: true
+        path: /auth/logout
+        get-allowed: true
+    intercept-url-map:
+      - pattern: /app.css
+        http-method: GET
+        access:
+          - isAnonymous()
 
 
 neo4j:

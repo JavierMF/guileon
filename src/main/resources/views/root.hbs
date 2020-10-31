@@ -4,17 +4,17 @@
         <div class="col-sm">
             <span class="light-grey">You want to be a...</span>
             <ul>
-                {{#careers}}
+                {{#data.careers}}
                     <li><a href="/careers/{{slug}}">{{name}}</a></li>
-                {{/careers}}
+                {{/data.careers}}
             </ul>
         </div>
         <div class="col-sm">
             <span class="light-grey">Or maybe you just want to learn...</span>
             <ul>
-                {{#subjects}}
+                {{#data.subjects}}
                     <li><a href="/subjects/{{slug}}">{{name}}</a></li>
-                {{/subjects}}
+                {{/data.subjects}}
             </ul>
         </div>
     </div>

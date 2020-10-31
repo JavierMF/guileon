@@ -2,19 +2,19 @@
 <div class="container">
     <div class="row content">
         <div class="col-sm-10">
-            <div class="resource-title">The <i>{{resource.type}}</i>  <a href="{{resource.url}}" taget="_blank">{{resource.name}}</a></div>
-            <div class="resource-metadata">{{metadataString}}</div>
+            <div class="resource-title">The <i>{{data.resource.type}}</i>  <a href="{{resource.url}}" taget="_blank">{{data.resource.name}}</a></div>
+            <div class="resource-metadata">{{data.metadataString}}</div>
             <div class="resource-popularity">
-                <span class="resource-like"><i class="far fa-thumbs-up"></i> {{resource.likes}} </span>
-                <span class="resource-dislike"><i class="far fa-thumbs-down"></i> {{resource.dislikes}} </span>
+                <span class="resource-like"><i class="far fa-thumbs-up"></i> {{data.resource.likes}} </span>
+                <span class="resource-dislike"><i class="far fa-thumbs-down"></i> {{data.resource.dislikes}} </span>
             </div>
             <span class="light-grey">...will help you to become</span>
             <ul>
-                {{#requirements}}
+                {{#data.requirements}}
                     <li>an <a href="/subjects/{{subject.slug}}/{{level}}">
                         <b>{{level}}</b> in {{subject.name}}
                     </a></li>
-                {{/requirements}}
+                {{/data.requirements}}
             </ul>
             {{!--
             <div class="pending-changes">
@@ -24,7 +24,7 @@
             --}}
         </div>
         <div class="col-sm-2 to-right">
-            <img class="img-responsive resource-image" src="{{resource.imageUrl}}">
+            <img class="img-responsive resource-image" src="{{data.resource.imageUrl}}">
         </div>
     </div>
     {{!--

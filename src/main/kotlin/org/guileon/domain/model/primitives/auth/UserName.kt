@@ -14,6 +14,6 @@ data class UserName(private val userName: String) {
     override fun toString() = value
 
     companion object {
-        val USERNAME_REGEX = "[a-zA-Z0-9_]".toRegex()
+        val USERNAME_REGEX = "[a-zA-Z0-9_]+".toRegex()
     }
 }

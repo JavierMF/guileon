@@ -13,5 +13,18 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #039be5ff;">
-    <br/>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample06" aria-controls="navbarsExample06" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item ">
+                {{#if user.name}}
+                    {{user.name}} - <a href="/auth/logout">Logout</a>
+                {{else}}
+                    <a href="/auth/login">Login</a>
+                {{/if}}
+            </li>
+        </ul>
+    </div>
 </nav>

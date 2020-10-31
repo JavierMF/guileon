@@ -10,6 +10,23 @@ body {
   font-size: 115%;
 }
 
+.nav-item a {
+    color: white;
+    border-color: white;
+    font-size: 11px;
+}
+
+.nav-item a:hover {
+    color: white;
+    border-color: white;
+    font-size: 11px;
+}
+
+li.nav-item {
+    color: white;
+    font-size: 11px;
+}
+
 .light-grey {
    color: #666666;
 }
