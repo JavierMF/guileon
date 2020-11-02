@@ -75,13 +75,11 @@ class TheRepository @Inject constructor(
                     mapOf("resourceSlug" to resourceSlug.value)
             ){ ProficencyRequirement(it["s"], it["r"]) }
 
-    fun getAuthDataFor(user: UserName): UserAuthData {
-        return UserAuthData(
-                UserName("guileon"),
-                SHA1Hash("62e247fe88240fa9848fd09846162fce395b018a") // guileon
-        )
-        // TODO: Implement this
-    }
+    fun getAuthDataFor(user: UserName): UserAuthData? =
+            neoDb.readAsEntity(
+                    "MATCH (u:User {username: \$username}) RETURN u",
+                    mapOf("username" to user.value)
+            ) { UserAuthData(it) }
 }
 
 private fun Career(v: Value): Career = Career(EntityName(v.string("name")), Slug(v.string("slug")))
@@ -100,3 +98,11 @@ private fun ProficencyRequirement(subjectValue: Value, proficencyValue: Value) =
         Subject(subjectValue),
         ProficencyLevel.valueOf(proficencyValue["level"].asString())
 )
+private fun UserAuthData(v: Value): UserAuthData? {
+    if (v.string("username") == null) return null
+
+    return UserAuthData(
+            userName = UserName((v.string("username"))),
+            passwordHash = SHA1Hash(v.string("pass"))
+    )
+}

@@ -28,6 +28,14 @@ class AuthenticationProviderUserPassword @Inject constructor(
         }, BackpressureStrategy.ERROR)
     }
 
-    private fun areValidCredentials(request: AuthenticationRequest<*, *>?) =
-        request != null && authBackend.isAuthValidForUser(UserName(request.identity as String), ClearPassword(request.secret as String))
+    private fun areValidCredentials(request: AuthenticationRequest<*, *>?): Boolean =
+        try {
+            request != null &&
+                    authBackend.isAuthValidForUser(
+                            UserName(request.identity as String),
+                            ClearPassword(request.secret as String)
+                    )
+        } catch (e: IllegalArgumentException) {
+            false // TODO: Provider better feedback for this exception
+        }
 }

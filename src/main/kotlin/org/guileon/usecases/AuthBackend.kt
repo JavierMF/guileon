@@ -12,7 +12,7 @@ class AuthBackend @Inject constructor(
 ) {
     fun isAuthValidForUser(user: UserName, secret: ClearPassword): Boolean {
         val authData = repository.getAuthDataFor(user)
-        return authData.isValidPassword(secret)
+        return authData?.isValidPassword(secret) ?: false
     }
 }
 

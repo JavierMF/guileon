@@ -11,7 +11,6 @@ micronaut:
   security:
     authentication: session
     redirect:
-      login-success: /
       login-failure: /auth/loginFailed
       prior-to-login: true
     endpoints:
