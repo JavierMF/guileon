@@ -1,7 +1,6 @@
 package org.guileon.boundaries.clients.web
 
 import io.micronaut.http.HttpResponse
-import io.micronaut.http.MutableHttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.annotation.PathVariable
@@ -20,8 +19,13 @@ import javax.inject.Inject
 data class ResourceViewModel(
         val resource: LearningResource,
         val requirements: List<ProficencyRequirement>,
-        val metadataString: String,
+        val metadata: ResourceMetaDataView,
         val pendingChanges: Int
+)
+
+data class ResourceMetaDataView(
+        val label: String,
+        val imageUrl: String?
 )
 
 @Secured(SecurityRule.IS_ANONYMOUS)
@@ -43,7 +47,8 @@ class ResourcesController @Inject constructor(
         val requirements = resourcesBackend.getRequirementContributingResource(slug)
         val pendingChanges = changesBackend.getPendingChangesForResource(slug)
 
-        val view  = ResourceViewModel(resource, requirements, metadata.asUIString(), pendingChanges)
+        val metadataView = ResourceMetaDataView(metadata.asUIString(), metadata.imageUrl()?.value)
+        val view  = ResourceViewModel(resource, requirements, metadataView, pendingChanges)
         return HttpResponse.ok(authViewDataProvider.addAuthInfo(view))
     }
 }

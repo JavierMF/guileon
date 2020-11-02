@@ -1,9 +1,9 @@
 {{> views/header }}
 <div class="container">
     <div class="row content">
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="resource-title">The <i>{{data.resource.type}}</i>  <a href="{{resource.url}}" taget="_blank">{{data.resource.name}}</a></div>
-            <div class="resource-metadata">{{data.metadataString}}</div>
+            <div class="resource-metadata">{{data.metadata.label}}</div>
             <div class="resource-popularity">
                 <span class="resource-like"><i class="far fa-thumbs-up"></i> {{data.resource.likes}} </span>
                 <span class="resource-dislike"><i class="far fa-thumbs-down"></i> {{data.resource.dislikes}} </span>
@@ -23,8 +23,8 @@
             </div>
             --}}
         </div>
-        <div class="col-sm-2 to-right">
-            <img class="img-responsive resource-image" src="{{data.resource.imageUrl}}">
+        <div class="col-sm-3 to-right">
+            <img class="img-responsive resource-image" src="{{data.metadata.imageUrl}}">
         </div>
     </div>
     {{!--

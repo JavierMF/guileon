@@ -91,8 +91,7 @@ private fun LearningResource(v: Value) = LearningResource(
         url = Url(v.string("url")),
         language = LangISO639(v.string("language")),
         likes = PositiveQuantity(v.int("likes")),
-        dislikes = PositiveQuantity(v.int("dislikes")),
-        imageUrl = Url(v.string("imageUrl"))
+        dislikes = PositiveQuantity(v.int("dislikes"))
 )
 private fun ProficencyRequirement(subjectValue: Value, proficencyValue: Value) = ProficencyRequirement(
         Subject(subjectValue),

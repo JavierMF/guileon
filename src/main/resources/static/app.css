@@ -32,7 +32,7 @@ li.nav-item {
 }
 
 .content {
-    margin-top: 100px;
+    margin-top: 60px;
 }
 
 a {
@@ -131,4 +131,8 @@ ul li::before {
 .btn-primary:hover {
     background: #039be5ff;
     border-color: #039be5ff;
+}
+
+label {
+   color: #666666;
 }

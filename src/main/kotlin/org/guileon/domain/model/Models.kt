@@ -37,8 +37,7 @@ data class LearningResource(
         val url: Url,
         val language: LangISO639,
         val likes: PositiveQuantity,
-        val dislikes: PositiveQuantity,
-        val imageUrl: Url? = Url("https://picsum.com/220/290")
+        val dislikes: PositiveQuantity
 )
 
 enum class LearningResourceType {
@@ -50,7 +49,8 @@ enum class LearningResourceType {
 }
 
 interface ResourceMetadata {
-    fun asUIString(): String;
+    fun asUIString(): String
+    fun imageUrl(): Url?
 }
 
 data class BookMetadata(
@@ -59,4 +59,5 @@ data class BookMetadata(
         val ISBN: Isbn?
 ): ResourceMetadata {
     override fun asUIString() = "by $author, $year. ISBN: $ISBN"
+    override fun imageUrl() = Url("http://covers.openlibrary.org/b/isbn/$ISBN-L.jpg")
 }
